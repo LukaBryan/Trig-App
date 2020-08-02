@@ -3,11 +3,20 @@ from math import *
 
 #Functions
 def trig():
+    Deg1.insert(0,"")
     Deg=int(Deg1.get())
-    H=int(Hyp.get())
+    if not Deg:
+        print("Please Enter a Angle for the program to continue")
+    HY=int(Hyp.get())
+    OB=int(Ob.get())
+    AD=int(Ad.get())
+    print(HY)
+    print(OB)
+    print(AD)
+    print(Deg)
     Rad = radians(Deg)
-    O = H * sin(Rad)
-    print(O)
+    if HY>1:
+        print(HY*sin(Deg))
     Deg1.delete(0, 'end')
     Hyp.delete(0, 'end')
 
@@ -22,6 +31,12 @@ Hyp.place(x=500, y=400)
 Deg1 = Entry(fg="Black", bg="#FFFFFF", width="20")
 Deg1.pack()
 Deg1.place(x=590, y=700)
+Ad = Entry(fg="Black", bg="#FFFFFF", width="20")
+Ad.pack()
+Ad.place(x=400, y=800)
+Ob = Entry(fg="Black", bg="#FFFFFF", width="20")
+Ob.pack()
+Ob.place(x=10, y=400)
 Adv = Button(fg="black", bg="#FFFFFF", width="20", text="Continue", command=trig)
 Adv.pack()
 Adv.place(x=20,y=20)
