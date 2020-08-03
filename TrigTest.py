@@ -41,6 +41,6 @@ Adv = Button(fg="black", bg="#FFFFFF", width="20", text="Continue", command=trig
 Adv.pack()
 Adv.place(x=20,y=20)
 canvas.pack()
-canvas.configure(bg="#FFFFFF")
+canvas.configure(bg="#F98E1D")
 window.resizable(False, False)
 window.mainloop()
