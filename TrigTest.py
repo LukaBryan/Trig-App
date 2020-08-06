@@ -1,28 +1,47 @@
 from tkinter import *
 from math import *
+DegEntry=0
+HypEntry=0
+ObEntry=0
+AdEntry=0
 
 #Functions
 def trig():
-    Deg=int(Deg1.get())
-    if not Deg:
-        print("Please Enter a Angle for the program to continue")
-    HY=int(Hyp.get())
-    OB=int(Ob.get())
-    AD=int(Ad.get())
-    print(HY)
-    print(OB)
-    print(AD)
-    print(Deg)
-    Rad = radians(Deg)
-    if HY>1:
-        print(HY*sin(Deg))
-    Deg1.delete(0, 'end')
-    Hyp.delete(0, 'end')
-
-def clickhy():
-    Hyp.delete(0,END)
-    print("bruh")
-
+    func=0
+    DegEntry=0
+    HypEntry=0
+    ObEntry=0
+    AdEntry=0
+    if not Deg1.get():
+        print("Deg has no value")
+    else:
+        DegEntry=1
+        print(Deg1.get())
+    if not Hyp.get():
+        print("Hyp has no value")
+    else:
+        HypEntry=1
+        print(Hyp.get())
+    if not Ob.get():
+        print("Ob has no value")
+    else:
+        ObEntry=1
+        print(Ob.get())
+    if not Ad.get():
+        print("Ad has no value")
+    else:
+        AdEntry=1
+        print(Ad.get())
+    if DegEntry==1 and HypEntry==1 or ObEntry==1 and DegEntry==1:
+        print("sin")
+    if DegEntry==1 and HypEntry==1 or AdEntry==1 and DegEntry==1:
+        print("cos")
+    if DegEntry==1 and ObEntry==1 or ObEntry==1 and DegEntry==1:
+        print("tan")
+    if  ObEntry==1 and HypEntry==1 or ObEntry==1 and AdEntry==1 or HypEntry==1 and AdEntry==1:
+        print("py")
+        if ObEntry==1 and HypEntry==1:
+            print(sqrt(int(Ob.get())**2 * int(Hyp.get())**2))
 # Tkinter Things
 window = Tk()
 canvas = Canvas(window, width=1000, height=900)
@@ -31,7 +50,6 @@ canvas.create_image(0, -150, anchor=NW, image=img)  # Creates triangle Graphic
 Hyp = Entry(window, fg="Black", bg="#FFFFFF", width="20")
 Hyp.pack()
 Hyp.place(x=500, y=400)
-Hyp.insert(0,"0")
 Deg1 = Entry(fg="Black", bg="#FFFFFF", width="20")
 Deg1.pack()
 Deg1.place(x=590, y=700)
@@ -48,8 +66,4 @@ canvas.pack()
 canvas.configure(bg="#F98E1D")
 window.resizable(False, False)
 window.mainloop()
-
-#Extra Stuff
-while True:
-    Hyp.bind("<Button1>", clickhy)
 
