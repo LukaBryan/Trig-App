@@ -3,7 +3,7 @@ from math import *
 DegEntry=0
 HypEntry=0
 ObEntry=0
-AdEntry=0
+AjEntry=0
 
 #Functions
 def trig():
@@ -11,37 +11,51 @@ def trig():
     DegEntry=0
     HypEntry=0
     ObEntry=0
-    AdEntry=0
+    AjEntry=0
     if not Deg1.get():
         print("Deg has no value")
     else:
         DegEntry=1
         print(Deg1.get())
+        Deg=int(Deg1.get())
+        Rad = radians(Deg)
     if not Hyp.get():
         print("Hyp has no value")
     else:
         HypEntry=1
+        Hyp1=int(Hyp.get())
         print(Hyp.get())
     if not Ob.get():
         print("Ob has no value")
     else:
         ObEntry=1
+        Ob1=int(Ob.get())
         print(Ob.get())
-    if not Ad.get():
+    if not Aj.get():
         print("Ad has no value")
     else:
-        AdEntry=1
-        print(Ad.get())
+        AjEntry=1
+        print(Aj.get())
+        Aj1=int(Aj.get())
     if DegEntry==1 and HypEntry==1 or ObEntry==1 and DegEntry==1:
+
         print("sin")
-    if DegEntry==1 and HypEntry==1 or AdEntry==1 and DegEntry==1:
+    if DegEntry==1 and HypEntry==1 or AjEntry==1 and DegEntry==1:
         print("cos")
     if DegEntry==1 and ObEntry==1 or ObEntry==1 and DegEntry==1:
         print("tan")
-    if  ObEntry==1 and HypEntry==1 or ObEntry==1 and AdEntry==1 or HypEntry==1 and AdEntry==1:
+    if  ObEntry==1 and HypEntry==1 or ObEntry==1 and AjEntry==1 or HypEntry==1 and AjEntry==1:
         print("py")
         if ObEntry==1 and HypEntry==1:
-            print(sqrt(int(Ob.get())**2 * int(Hyp.get())**2))
+            Answer=int(sqrt(Ob1**2-Hyp1**2))
+            print(Answer)
+        if AjEntry==1 and HypEntry==1:
+            Answer=int(sqrt(Aj1**2-Hyp1**2))
+            print(Answer)
+        if ObEntry==1 and AjEntry==1:
+            Answer=int(sqrt(Ob1**2+Aj1**2))
+            print(Answer)
+
 # Tkinter Things
 window = Tk()
 canvas = Canvas(window, width=1000, height=900)
@@ -53,9 +67,9 @@ Hyp.place(x=500, y=400)
 Deg1 = Entry(fg="Black", bg="#FFFFFF", width="20")
 Deg1.pack()
 Deg1.place(x=590, y=700)
-Ad = Entry(fg="Black", bg="#FFFFFF", width="20")
-Ad.pack()
-Ad.place(x=400, y=800)
+Aj = Entry(fg="Black", bg="#FFFFFF", width="20")
+Aj.pack()
+Aj.place(x=400, y=800)
 Ob = Entry(fg="Black", bg="#FFFFFF", width="20")
 Ob.pack()
 Ob.place(x=10, y=400)
