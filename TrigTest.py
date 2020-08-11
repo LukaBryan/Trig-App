@@ -38,8 +38,11 @@ def trig():
         print(Aj.get())
         Aj1=int(Aj.get())
     if DegEntry==1 and HypEntry==1 or ObEntry==1 and DegEntry==1:
-
-        print("sin")
+        if DegEntry==1 and HypEntry:
+            Answer=Hyp1/sin(Rad)
+        if DegEntry==1 and ObEntry==1:
+            Answer=Ob1*sin(Rad)
+        print(Answer)
     if DegEntry==1 and HypEntry==1 or AjEntry==1 and DegEntry==1:
         print("cos")
     if DegEntry==1 and ObEntry==1 or ObEntry==1 and DegEntry==1:
@@ -79,5 +82,6 @@ Adv.place(x=20,y=20)
 canvas.pack()
 canvas.configure(bg="#F98E1D")
 window.resizable(False, False)
+window.title("Trig App")
 window.mainloop()
 
