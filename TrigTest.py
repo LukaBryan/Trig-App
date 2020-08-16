@@ -73,7 +73,8 @@ def trig():
         if ObEntry == 1 and AjEntry == 1:
             Answer = int(sqrt(Ob1 ** 2 + Aj1 ** 2))
             print(Answer)
-
+    Ans=Label(text=str(Answer))
+    Ans.pack()
 
 # Tkinter Things
 window = Tk()
