@@ -9,7 +9,7 @@ AjEntry = 0
 
 # Functions
 def trig():
-    Answer="bruh"
+    Answer = "bruh"
     DegEntry = 0
     HypEntry = 0
     ObEntry = 0
@@ -73,8 +73,9 @@ def trig():
         if ObEntry == 1 and AjEntry == 1:
             Answer = int(sqrt(Ob1 ** 2 + Aj1 ** 2))
             print(Answer)
-    Ans=Label(text=str(Answer))
+    Ans = Label(text=str(Answer))
     Ans.pack()
+
 
 # Tkinter Things
 window = Tk()
