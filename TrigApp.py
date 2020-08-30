@@ -1,16 +1,59 @@
 from tkinter import *
 from math import *
 
-DegEntry = 0
-HypEntry = 0
-ObEntry = 0
-AjEntry = 0
-
 # Functions
 def TrigFunc():
-    print("bruh")
+    Deg1Entry = 0
+    Deg2Entry = 0
+    HypEntry = 0
+    OppEntry = 0
+    AdjEntry = 0
 
-# Tkinter Set up
+    #Checks for values in each entry
+    if not Angle1.get():
+        print("Deg1 has no value")
+    else:
+        Deg1 = Angle1.get()
+        if type(Deg1)==int:
+            Deg1Entry = 1
+            print(Angle1.get())
+            if Deg1 < 1.5708:
+                print("you cant do that")
+        else:
+            print("Deg1 Invalid value")
+
+    if not Angle2.get():
+        print("Deg2 has no value")
+    else:
+        Deg2 = Angle2.get()
+        if type(Deg2)==int:
+            Deg1Entry = 1
+            print(Angle2.get())
+            if Deg2 < 1.5708:
+                print("you cant do that")
+        else:
+            print("Deg2 Invalid value")
+
+    if not Hyp.get():
+        print("Hyp has no value")
+    else:
+        HypEntry = 1
+        Hyp1 = int(Hyp.get())
+        print(Hyp.get())
+    if not Opp.get():
+        print("Opp has no value")
+    else:
+        OppEntry = 1
+        Opp1 = int(Opp.get())
+        print(Opp.get())
+    if not Adj.get():
+        print("Adj has no value")
+    else:
+        AdjEntry = 1
+        print(Adj.get())
+        Adj1 = int(Adj.get())
+
+### Tkinter Set up
 window = Tk()
 canvas = Canvas(window, width=1000, height=1000)  # Defines how big the window can be
 img = PhotoImage(file="kinghom.gif")  # Import image
@@ -71,7 +114,7 @@ TwoLabel.place(x=150, y=450, anchor=CENTER)
 
 # Buttons
 Buttonimg = PhotoImage(file="ButtonImage.gif")
-Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=TrigFunc())
+Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=TrigFunc)
 Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
 
 window.title("Trig Calculator")  # Sets window name
