@@ -4,66 +4,109 @@ from math import *
 
 # Functions
 def TrigFunc():
-    Deg1Entry = 0
-    Deg2Entry = 0
-    HypEntry = 0
-    OppEntry = 0
-    AdjEntry = 0
 
     # Checks for values in each entry
-    if not Angle1.get():
-        print("Deg1 has no value")
-    else:
-        Deg1 = Angle1.get()
-        if type(Deg1) == int:
-            Deg1Entry = 1
-            print(Angle1.get())
-            if Deg1 < 1.5708:
-                print("you cant do that")
-        else:
-            print("Deg1 Invalid value")
+    while True:
+        try:
+            HypInt = int(Hyp.get())
+            break
+        except ValueError or AttributeError:
+            HypInt = int()
+            print("Hyp not given, set to 0")
+            break
+    while True:
+        try:
+            OppInt = int(Opp.get())
+            break
+        except ValueError:
+            OppInt = int()
+            print("Opp not given, set to 0")
+            break
+    while True:
+        try:
+            AdjInt = int(Adj.get())
+            break
+        except ValueError or AttributeError:
+            AdjInt = int()
+            print("Adj not given, set to 0")
+            break
+    while True:
+        try:
+            Deg1Int = int(Angle1.get())
+            break
+        except ValueError or AttributeError:
+            Deg1Int = int()
+            print("Deg1 not given, set to 0")
+            break
+    while True:
+        try:
+            Deg2Int = int(Angle2.get())
+            break
+        except ValueError or AttributeError:
+            Deg2Int = int()
+            print("Deg2 not given, set to 0")
+            break
+    print(HypInt)
+    print(OppInt)
+    print(AdjInt)
+    print(Deg1Int)
+    print(Deg2Int)
 
-    if not Angle2.get():
-        print("Deg2 has no value")
-    else:
-        Deg2 = Angle2.get()
-        if type(Deg2) == int:
-            Deg1Entry = 1
-            print(Angle2.get())
-            if Deg2 < 1.5708:
-                print("you cant do that")
+    yes = False
+    if yes is True:
+        if not Angle1.get():
+            print("Deg1 has no value")
         else:
-            print("Deg2 Invalid value")
+            Deg1 = Angle1.get()
+            if type(Deg1) == int():
+                Deg1Entry = 1
+                print(Angle1.get())
+                if Deg1 < 1.5708:
+                    print("you cant do that")
+            else:
+                print("Deg1 Invalid value")
 
-    if not Hyp.get():
-        print("Hyp has no value")
-    else:
-        Hyp1 = Hyp.get()
-        if type(Hyp1) == int:
-            Hyp1Entry = 1
-            print(Hyp.get())
+        if not Angle2.get():
+            print("Deg2 has no value")
         else:
-            print("Hyp Invalid value")
+            Deg2 = Angle2.get()
+            if type(Deg2) == int():
+                Deg1Entry = 1
+                print(Angle2.get())
+                if Deg2 < 1.5708:
+                    print("you cant do that")
+            else:
+                print("Deg2 Invalid value")
 
-    if not Opp.get():
-        print("Opp has no value")
-    else:
-        Opp1 = Opp.get()
-        if type(Opp1) == int:
-            OppEntry = 1
-            print(Opp.get())
+        if not Hyp.get():
+            print("Hyp has no value")
         else:
-            print("Opp Invalid value")
+            Hyp1 = Hyp.get()
+            if type(Hyp1) == int:
+                Hyp1Entry = 1
+                print(Hyp.get())
+            else:
+                print("Hyp Invalid value")
 
-    if not Adj.get():
-        print("Adj has no value")
-    else:
-        Adj1 = Adj.get()
-        if type(Adj1) == int:
-            OppEntry = 1
-            print(Adj.get())
+        if not Opp.get():
+            print("Opp has no value")
         else:
-            print("Opp Invalid value")
+            Opp1 = Opp.get()
+            if type(Opp1) == int:
+                OppEntry = 1
+                print(Opp.get())
+            else:
+                print("Opp Invalid value")
+
+        if not Adj.get():
+            print("Adj has no value")
+        else:
+            Adj1 = Adj.get()
+            if type(Adj1) == int:
+                OppEntry = 1
+                print(Adj.get())
+            else:
+                print("Opp Invalid value")
 
 
 ### Tkinter Set up
