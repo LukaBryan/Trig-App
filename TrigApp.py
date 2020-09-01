@@ -52,62 +52,53 @@ def TrigFunc():
     print(Deg1Int)
     print(Deg2Int)
 
-    yes = False
-    if yes is True:
-        if not Angle1.get():
-            print("Deg1 has no value")
-        else:
-            Deg1 = Angle1.get()
-            if type(Deg1) == int():
-                Deg1Entry = 1
-                print(Angle1.get())
-                if Deg1 < 1.5708:
-                    print("you cant do that")
-            else:
-                print("Deg1 Invalid value")
+    # Working out what trig scenario to use
+    if (Deg1Int or Deg2Int) and HypInt >0: # Sin Hyp and Deg1 or Deg2
+        print("Sin 1")
 
-        if not Angle2.get():
-            print("Deg2 has no value")
-        else:
-            Deg2 = Angle2.get()
-            if type(Deg2) == int():
-                Deg1Entry = 1
-                print(Angle2.get())
-                if Deg2 < 1.5708:
-                    print("you cant do that")
-            else:
-                print("Deg2 Invalid value")
+    elif (Deg1Int or Deg2Int) and OppInt >0: # Sin Opp and Deg1 or Deg2
+        print("Sin 2")
 
-        if not Hyp.get():
-            print("Hyp has no value")
-        else:
-            Hyp1 = Hyp.get()
-            if type(Hyp1) == int:
-                Hyp1Entry = 1
-                print(Hyp.get())
-            else:
-                print("Hyp Invalid value")
+    elif (Deg1Int or Deg2Int) and HypInt >0: # Cos Hyp and Deg1 or Deg2
+        print("Cos 1")
 
-        if not Opp.get():
-            print("Opp has no value")
-        else:
-            Opp1 = Opp.get()
-            if type(Opp1) == int:
-                OppEntry = 1
-                print(Opp.get())
-            else:
-                print("Opp Invalid value")
+    elif (Deg1Int or Deg2Int) and AdjInt >0: # Cos Adj and Deg1 or Deg2
+        print("Cos 2")
 
-        if not Adj.get():
-            print("Adj has no value")
-        else:
-            Adj1 = Adj.get()
-            if type(Adj1) == int:
-                OppEntry = 1
-                print(Adj.get())
-            else:
-                print("Opp Invalid value")
+    elif (Deg1Int or Deg2Int) and AdjInt >0: # Cos Adj and Deg1 or Deg2
+        print("Trig 1")
 
+    elif (Deg1Int or Deg2Int) and OppInt >0: # Cos Adj and Deg1 or Deg2
+        print("Trig 2")
+
+    if Deg1Int >0: # Checking angle 1 value
+        if Deg1Int < 90: # Checks if value is valid
+            AnswerDeg=int(90-Deg1Int)
+            print("Angle 1 is {} Degrees".format(AnswerDeg))
+        else:
+            print("{} is an invalid input".format(Deg1Int))
+
+    elif Deg2Int >0: # Checking angle 2 value
+        if Deg2Int < 90: # Checks if value is valid
+            AnswerDeg=int(90-Deg2Int)
+            print("Angle 2 is {} Degrees".format(AnswerDeg))
+        else:
+            print("{} is an invalid input".format(Deg2Int))
+
+    if OppInt and HypInt >0:
+        print("Py 1")
+        AnswerPy=float(sqrt(HypInt**2-OppInt**2))
+        print("Adj is {:.2f}".format(AnswerPy))
+
+    elif AdjInt and HypInt >0:
+        print("Py 2")
+        AnswerPy=float(sqrt(HypInt**2-AdjInt**2))
+        print("Opp is {:.2f}".format(AnswerPy))
+
+    elif AdjInt and OppInt >0:
+        print("Py 3")
+        AnswerPy=float(sqrt(AdjInt**2+OppInt**2))
+        print("Hyp is {:.2f}".format(AnswerPy))
 
 ### Tkinter Set up
 window = Tk()
