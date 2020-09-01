@@ -1,6 +1,7 @@
 from tkinter import *
 from math import *
 
+
 # Functions
 def TrigFunc():
     Deg1Entry = 0
@@ -9,12 +10,12 @@ def TrigFunc():
     OppEntry = 0
     AdjEntry = 0
 
-    #Checks for values in each entry
+    # Checks for values in each entry
     if not Angle1.get():
         print("Deg1 has no value")
     else:
         Deg1 = Angle1.get()
-        if type(Deg1)==int:
+        if type(Deg1) == int:
             Deg1Entry = 1
             print(Angle1.get())
             if Deg1 < 1.5708:
@@ -26,7 +27,7 @@ def TrigFunc():
         print("Deg2 has no value")
     else:
         Deg2 = Angle2.get()
-        if type(Deg2)==int:
+        if type(Deg2) == int:
             Deg1Entry = 1
             print(Angle2.get())
             if Deg2 < 1.5708:
@@ -37,21 +38,33 @@ def TrigFunc():
     if not Hyp.get():
         print("Hyp has no value")
     else:
-        HypEntry = 1
-        Hyp1 = int(Hyp.get())
-        print(Hyp.get())
+        Hyp1 = Hyp.get()
+        if type(Hyp1) == int:
+            Hyp1Entry = 1
+            print(Hyp.get())
+        else:
+            print("Hyp Invalid value")
+
     if not Opp.get():
         print("Opp has no value")
     else:
-        OppEntry = 1
-        Opp1 = int(Opp.get())
-        print(Opp.get())
+        Opp1 = Opp.get()
+        if type(Opp1) == int:
+            OppEntry = 1
+            print(Opp.get())
+        else:
+            print("Opp Invalid value")
+
     if not Adj.get():
         print("Adj has no value")
     else:
-        AdjEntry = 1
-        print(Adj.get())
-        Adj1 = int(Adj.get())
+        Adj1 = Adj.get()
+        if type(Adj1) == int:
+            OppEntry = 1
+            print(Adj.get())
+        else:
+            print("Opp Invalid value")
+
 
 ### Tkinter Set up
 window = Tk()
