@@ -3,47 +3,54 @@ from math import *
 
 
 # Functions
-def TrigFunc():
+def EntryValue():
+    global HypInt
+    global OppInt
+    global AdjInt
+    global Deg1Int
+    global Deg2Int
 
     # Checks for values in each entry
     while True:
         try:
-            HypInt = int(Hyp.get())
+            HypInt = float(Hyp.get())
             break
         except ValueError or AttributeError:
-            HypInt = int()
+            HypInt = float()
             print("Hyp not given, set to 0")
             break
     while True:
         try:
-            OppInt = int(Opp.get())
+            OppInt = float(Opp.get())
             break
         except ValueError:
-            OppInt = int()
+            OppInt = float()
             print("Opp not given, set to 0")
             break
     while True:
         try:
-            AdjInt = int(Adj.get())
+            AdjInt = float(Adj.get())
             break
         except ValueError or AttributeError:
-            AdjInt = int()
+            AdjInt = float()
             print("Adj not given, set to 0")
             break
     while True:
         try:
-            Deg1Int = int(Angle1.get())
+            Deg1Int = float(Angle1.get())
+            Deg1int=radians(Deg1Int)
             break
         except ValueError or AttributeError:
-            Deg1Int = int()
+            Deg1Int = float()
             print("Deg1 not given, set to 0")
             break
     while True:
         try:
-            Deg2Int = int(Angle2.get())
+            Deg2Int = float(Angle2.get())
+            Deg2int=radians(Deg2Int)
             break
         except ValueError or AttributeError:
-            Deg2Int = int()
+            Deg2Int = float()
             print("Deg2 not given, set to 0")
             break
     print(HypInt)
@@ -52,9 +59,15 @@ def TrigFunc():
     print(Deg1Int)
     print(Deg2Int)
 
+def TrigFunc():
     # Working out what trig scenario to use
     if (Deg1Int or Deg2Int) and HypInt >0: # Sin Hyp and Deg1 or Deg2
         print("Sin 1")
+        if Deg1Int >0:
+            AnswerTrig=float(sin(Deg1Int)*HypInt)
+        elif Deg2Int >0:
+            AnswerTrig=float(sin(Deg2Int)*HypInt)
+        print("{:.2f}".format(AnswerTrig))
 
     elif (Deg1Int or Deg2Int) and OppInt >0: # Sin Opp and Deg1 or Deg2
         print("Sin 2")
@@ -71,6 +84,7 @@ def TrigFunc():
     elif (Deg1Int or Deg2Int) and OppInt >0: # Cos Adj and Deg1 or Deg2
         print("Trig 2")
 
+def AngleCal():
     if Deg1Int >0: # Checking angle 1 value
         if Deg1Int < 90: # Checks if value is valid
             AnswerDeg=int(90-Deg1Int)
@@ -85,20 +99,25 @@ def TrigFunc():
         else:
             print("{} is an invalid input".format(Deg2Int))
 
-    if OppInt and HypInt >0:
+def Pythag():
+    if OppInt and HypInt >0: # Checking what Py scenario to use
         print("Py 1")
         AnswerPy=float(sqrt(HypInt**2-OppInt**2))
         print("Adj is {:.2f}".format(AnswerPy))
 
-    elif AdjInt and HypInt >0:
+    elif AdjInt and HypInt >0: # Checking what Py scenario to use
         print("Py 2")
         AnswerPy=float(sqrt(HypInt**2-AdjInt**2))
         print("Opp is {:.2f}".format(AnswerPy))
 
-    elif AdjInt and OppInt >0:
+    elif AdjInt and OppInt >0: # Checking what Py scenario to use
         print("Py 3")
         AnswerPy=float(sqrt(AdjInt**2+OppInt**2))
         print("Hyp is {:.2f}".format(AnswerPy))
+
+def MainProgram():
+    EntryValue()
+    TrigFunc()
 
 ### Tkinter Set up
 window = Tk()
@@ -161,7 +180,7 @@ TwoLabel.place(x=150, y=450, anchor=CENTER)
 
 # Buttons
 Buttonimg = PhotoImage(file="ButtonImage.gif")
-Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=TrigFunc)
+Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
 Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
 
 window.title("Trig Calculator")  # Sets window name
