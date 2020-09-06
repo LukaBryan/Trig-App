@@ -4,120 +4,165 @@ from math import *
 
 # Functions
 def EntryValue():
-    global HypInt
-    global OppInt
-    global AdjInt
-    global Deg1Int
-    global Deg2Int
+    global HypVar
+    global OppVar
+    global AdjVar
+    global Deg1Var
+    global Deg2Var
 
     # Checks for values in each entry
     while True:
         try:
-            HypInt = float(Hyp.get())
+            HypVar = float(Hyp.get())
             break
         except ValueError or AttributeError:
-            HypInt = float()
+            HypVar = float()
             print("Hyp not given, set to 0")
             break
     while True:
         try:
-            OppInt = float(Opp.get())
+            OppVar = float(Opp.get())
             break
         except ValueError:
-            OppInt = float()
+            OppVar = float()
             print("Opp not given, set to 0")
             break
     while True:
         try:
-            AdjInt = float(Adj.get())
+            AdjVar = float(Adj.get())
             break
         except ValueError or AttributeError:
-            AdjInt = float()
+            AdjVar = float()
             print("Adj not given, set to 0")
             break
     while True:
         try:
-            Deg1Int = float(Angle1.get())
-            Deg1int=radians(Deg1Int)
+            Deg1Var = float(Angle1.get())
             break
         except ValueError or AttributeError:
-            Deg1Int = float()
+            Deg1Var = float()
             print("Deg1 not given, set to 0")
             break
     while True:
         try:
-            Deg2Int = float(Angle2.get())
-            Deg2int=radians(Deg2Int)
+            Deg2Var = float(Angle2.get())
             break
         except ValueError or AttributeError:
-            Deg2Int = float()
+            Deg2Var = float()
             print("Deg2 not given, set to 0")
             break
-    print(HypInt)
-    print(OppInt)
-    print(AdjInt)
-    print(Deg1Int)
-    print(Deg2Int)
+    print(HypVar)
+    print(OppVar)
+    print(AdjVar)
+    print(Deg1Var)
+    print(Deg2Var)
+
 
 def TrigFunc():
+    global HypVar
+    global OppVar
+    global AdjVar
+
     # Working out what trig scenario to use
-    if (Deg1Int or Deg2Int) and HypInt >0: # Sin Hyp and Deg1 or Deg2
+    if (Deg1Var or Deg2Var) and HypVar > 0:  # Sin Hyp and Deg1 or Deg2
         print("Sin 1")
-        if Deg1Int >0:
-            AnswerTrig=float(sin(Deg1Int)*HypInt)
-        elif Deg2Int >0:
-            AnswerTrig=float(sin(Deg2Int)*HypInt)
-        print("{:.2f}".format(AnswerTrig))
+        if Deg1Var > 0:
+            AnswerTrig = float(sin(Deg1Var) * HypVar)
+        elif Deg2Var > 0:
+            AnswerTrig = float(sin(Deg2Var) * HypVar)
+        print("Opp = {:.2f}".format(AnswerTrig))
+        OppVar=AnswerTrig
 
-    elif (Deg1Int or Deg2Int) and OppInt >0: # Sin Opp and Deg1 or Deg2
+    elif (Deg1Var or Deg2Var) and OppVar > 0:  # Sin Opp and Deg1 or Deg2
         print("Sin 2")
+        if Deg1Var > 0:
+            AnswerTrig = float(OppVar / sin(Deg1Var))
+        elif Deg2Var > 0:
+            AnswerTrig = float(OppVar / sin(Deg2Var))
+        print("Hyp = {:.2f}".format(AnswerTrig))
+        HypVar=AnswerTrig
 
-    elif (Deg1Int or Deg2Int) and HypInt >0: # Cos Hyp and Deg1 or Deg2
+    if (Deg1Var or Deg2Var) and HypVar > 0:  # Cos Hyp and Deg1 or Deg2
         print("Cos 1")
+        if Deg1Var > 0:
+            AnswerTrig = float(HypVar * cos(Deg1Var))
+        elif Deg2Var > 0:
+            AnswerTrig = float(HypVar * sin(Deg2Var))
+        print("Hyp = {:.2f}".format(AnswerTrig))
+        AdjVar=AnswerTrig
 
-    elif (Deg1Int or Deg2Int) and AdjInt >0: # Cos Adj and Deg1 or Deg2
+    elif (Deg1Var or Deg2Var) and AdjVar > 0:  # Cos Adj and Deg1 or Deg2
         print("Cos 2")
+         if Deg1Var > 0:
+            AnswerTrig = float(OppVar / sin(Deg1Var))
+        elif Deg2Var > 0:
+            AnswerTrig = float(OppVar / sin(Deg2Var))
+        print("Hyp = {:.2f}".format(AnswerTrig))
+        AdjVar=AnswerTrig
 
-    elif (Deg1Int or Deg2Int) and AdjInt >0: # Cos Adj and Deg1 or Deg2
+    if (Deg1Var or Deg2Var) and AdjVar > 0:  # Cos Adj and Deg1 or Deg2
         print("Trig 1")
 
-    elif (Deg1Int or Deg2Int) and OppInt >0: # Cos Adj and Deg1 or Deg2
+    elif (Deg1Var or Deg2Var) and OppVar > 0:  # Cos Adj and Deg1 or Deg2
         print("Trig 2")
 
-def AngleCal():
-    if Deg1Int >0: # Checking angle 1 value
-        if Deg1Int < 90: # Checks if value is valid
-            AnswerDeg=int(90-Deg1Int)
-            print("Angle 1 is {} Degrees".format(AnswerDeg))
-        else:
-            print("{} is an invalid input".format(Deg1Int))
 
-    elif Deg2Int >0: # Checking angle 2 value
-        if Deg2Int < 90: # Checks if value is valid
-            AnswerDeg=int(90-Deg2Int)
-            print("Angle 2 is {} Degrees".format(AnswerDeg))
+def AngleCal():
+    global Deg1Var
+    global Deg2Var
+
+    if Deg1Var > 0:  # Checking angle 1 value
+        if Deg1Var < 90:  # Checks if value is valid
+            AnswerDeg = float(90 - Deg1Var)
+            print("Angle 2 is {:.2f} Degrees".format(AnswerDeg))
+            Deg1Var = AnswerDeg
         else:
-            print("{} is an invalid input".format(Deg2Int))
+            print("{} is an invalid input".format(Deg1Var))
+
+    elif Deg2Var > 0:  # Checking angle 2 value
+        if Deg2Var < 90:  # Checks if value is valid
+            AnswerDeg = float(90 - Deg2Var)
+            print("Angle 1 is {:.2f} Degrees".format(AnswerDeg))
+            Deg2Var = AnswerDeg
+        else:
+            print("{} is an invalid input".format(Deg2Var))
+
 
 def Pythag():
-    if OppInt and HypInt >0: # Checking what Py scenario to use
+
+    global HypVar
+    global OppVar
+    global AdjVar
+
+    if OppVar and HypVar > 0:  # Checking what Py scenario to use
         print("Py 1")
-        AnswerPy=float(sqrt(HypInt**2-OppInt**2))
+        AnswerPy = float(sqrt(HypVar ** 2 - OppVar ** 2))
         print("Adj is {:.2f}".format(AnswerPy))
+        AdjVar = AnswerPy
 
-    elif AdjInt and HypInt >0: # Checking what Py scenario to use
+    elif AdjVar and HypVar > 0:  # Checking what Py scenario to use
         print("Py 2")
-        AnswerPy=float(sqrt(HypInt**2-AdjInt**2))
+        AnswerPy = float(sqrt(HypVar ** 2 - AdjVar ** 2))
         print("Opp is {:.2f}".format(AnswerPy))
+        OppVar = AnswerPy
 
-    elif AdjInt and OppInt >0: # Checking what Py scenario to use
+    elif AdjVar and OppVar > 0:  # Checking what Py scenario to use
         print("Py 3")
-        AnswerPy=float(sqrt(AdjInt**2+OppInt**2))
+        AnswerPy = float(sqrt(AdjVar ** 2 + OppVar ** 2))
         print("Hyp is {:.2f}".format(AnswerPy))
+        HypVar = AnswerPy
+
 
 def MainProgram():
+    global Deg1Var
+    global Deg2Var
     EntryValue()
     TrigFunc()
+    AngleCal()
+    Deg1Var=radians(Deg1Var)
+    Deg2Var=radians(Deg2Var)
+    Pythag()
+
 
 ### Tkinter Set up
 window = Tk()
