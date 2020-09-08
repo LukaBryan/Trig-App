@@ -1,6 +1,6 @@
 from tkinter import *
 from math import *
-
+ToggleEntry = True
 
 # Functions
 def EntryValue():
@@ -93,7 +93,7 @@ def TrigFunc():
 
     elif (Deg1Var or Deg2Var) and AdjVar > 0:  # Cos Adj and Deg1 or Deg2
         print("Cos 2")
-         if Deg1Var > 0:
+        if Deg1Var > 0:
             AnswerTrig = float(OppVar / sin(Deg1Var))
         elif Deg2Var > 0:
             AnswerTrig = float(OppVar / sin(Deg2Var))
@@ -162,7 +162,44 @@ def MainProgram():
     Deg1Var=radians(Deg1Var)
     Deg2Var=radians(Deg2Var)
     Pythag()
+    Entryboxes()
 
+def Entryboxes():
+    global ToggleEntry
+    global Hyp
+    global Opp
+    global Adj
+    global Angle1
+    global Angle2
+    global Submit
+    global Return
+
+    if ToggleEntry==True:
+        #### DESTROY NEW BUTTONS
+        Hyp = Entry(window, fg="Black", width="10", font=("arial", 28))
+        Hyp.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
+        Opp = Entry(window, fg="Black", width="10", font=("arial", 28))
+        Opp.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
+        Adj = Entry(window, fg="Black", width="10", font=("arial", 28))
+        Adj.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
+        Angle1 = Entry(window, fg="Black", width="10", font=("arial", 28))
+        Angle1.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
+        Angle2 = Entry(window, fg="Black", bg="#FFFFFF", width="10", font=("arial", 28))
+        Angle2.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
+        Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
+        Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
+        Return.destroy()
+
+    if ToggleEntry==False:
+        Hyp.destroy()
+        Opp.destroy()
+        Adj.destroy()
+        Angle1.destroy()
+        Angle2.destroy()
+        Submit.destroy()
+        Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
+        Return.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
+    ToggleEntry = not ToggleEntry
 
 ### Tkinter Set up
 window = Tk()
@@ -170,6 +207,7 @@ canvas = Canvas(window, width=1000, height=1000)  # Defines how big the window c
 img = PhotoImage(file="kinghom.gif")  # Import image
 canvas.create_image(500, 500, image=img)  # Creates triangle Graphic
 window.resizable(False, False)  # Stop the ability for the window to be resized
+Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
 
 LabelRelXFloat = 0.58
 EntryRelXFloat = 0.8
@@ -181,30 +219,31 @@ HeightInc = 0.06
 TitleLabel = Label(window, text="Trig Calculator", font=("arial", 48))
 TitleLabel.place(x=20, y=16, anchor=NW)
 
+# Adding button image
+Buttonimg = PhotoImage(file="ButtonImage.gif")
+
 # Entries and entry labels
-Hyp = Entry(window, fg="Black", width="10", font=("arial", 28))  # Entry box for the H length on triangle
+Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
+Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
+Hyp = Entry(window, fg="Black", width="10", font=("arial", 28))
+Opp = Entry(window, fg="Black", width="10", font=("arial", 28))
+Adj = Entry(window, fg="Black", width="10", font=("arial", 28))
+Angle1 = Entry(window, fg="Black", width="10", font=("arial", 28))
+Angle2 = Entry(window, fg="Black", bg="#FFFFFF", width="10", font=("arial", 28))
+
 HypLabel = Label(window, text="H = ", bg="white", font=("arial", 32))
-Hyp.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
 HypLabel.place(relx=LabelRelXFloat, rely=Height, anchor=CENTER)
 
-Opp = Entry(window, fg="Black", width="10", font=("arial", 28))
 OppLabel = Label(window, text="O = ", bg="white", font=("arial", 32))
-Opp.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
 OppLabel.place(relx=LabelRelXFloat, rely=Height + HeightInc, anchor=CENTER)
 
-Adj = Entry(window, fg="Black", width="10", font=("arial", 28))
 AdjLabel = Label(window, text="A = ", bg="white", font=("arial", 32))
-Adj.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
 AdjLabel.place(relx=LabelRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
 
-Angle1 = Entry(window, fg="Black", width="10", font=("arial", 28))
 Angle1Label = Label(window, text="∠1 = ", bg="white", font=("arial", 32))
-Angle1.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
 Angle1Label.place(relx=LabelRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
 
-Angle2 = Entry(window, fg="Black", bg="#FFFFFF", width="10", font=("arial", 28))
 Angle2Label = Label(window, text="∠2 = ", bg="white", font=("arial", 32))
-Angle2.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
 Angle2Label.place(relx=LabelRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
 
 # Triangle labels
@@ -223,13 +262,12 @@ OneLabel.place(x=595, y=845, anchor=CENTER)
 TwoLabel = Label(window, text="2", bg="white", font=("arial", 32))
 TwoLabel.place(x=150, y=450, anchor=CENTER)
 
-# Buttons
-Buttonimg = PhotoImage(file="ButtonImage.gif")
-Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
-Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
+
+# Initiate buttons and entry boxes
+Entryboxes()
 
 window.title("Trig Calculator")  # Sets window name
-###canvas.configure(bg="grey50")
+canvas.configure(bg="grey50")
 window.iconbitmap(bitmap="icon.ico")
 canvas.pack()
 window.mainloop()
