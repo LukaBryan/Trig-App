@@ -1,6 +1,13 @@
 from tkinter import *
 from math import *
+
 ToggleEntry = True
+HypVar = 0
+OppVar = 0
+AdjVar = 0
+Deg1Var = 0
+Deg2Var = 0
+
 
 # Functions
 def EntryValue():
@@ -71,7 +78,7 @@ def TrigFunc():
         elif Deg2Var > 0:
             AnswerTrig = float(sin(Deg2Var) * HypVar)
         print("Opp = {:.2f}".format(AnswerTrig))
-        OppVar=AnswerTrig
+        OppVar = AnswerTrig
 
     elif (Deg1Var or Deg2Var) and OppVar > 0:  # Sin Opp and Deg1 or Deg2
         print("Sin 2")
@@ -80,16 +87,16 @@ def TrigFunc():
         elif Deg2Var > 0:
             AnswerTrig = float(OppVar / sin(Deg2Var))
         print("Hyp = {:.2f}".format(AnswerTrig))
-        HypVar=AnswerTrig
+        HypVar = AnswerTrig
 
-    if (Deg1Var or Deg2Var) and HypVar > 0:  # Cos Hyp and Deg1 or Deg2
+    elif (Deg1Var or Deg2Var) and HypVar > 0:  # Cos Hyp and Deg1 or Deg2
         print("Cos 1")
         if Deg1Var > 0:
             AnswerTrig = float(HypVar * cos(Deg1Var))
         elif Deg2Var > 0:
             AnswerTrig = float(HypVar * sin(Deg2Var))
         print("Hyp = {:.2f}".format(AnswerTrig))
-        AdjVar=AnswerTrig
+        AdjVar = AnswerTrig
 
     elif (Deg1Var or Deg2Var) and AdjVar > 0:  # Cos Adj and Deg1 or Deg2
         print("Cos 2")
@@ -98,9 +105,9 @@ def TrigFunc():
         elif Deg2Var > 0:
             AnswerTrig = float(OppVar / sin(Deg2Var))
         print("Hyp = {:.2f}".format(AnswerTrig))
-        AdjVar=AnswerTrig
+        AdjVar = AnswerTrig
 
-    if (Deg1Var or Deg2Var) and AdjVar > 0:  # Cos Adj and Deg1 or Deg2
+    elif (Deg1Var or Deg2Var) and AdjVar > 0:  # Cos Adj and Deg1 or Deg2
         print("Trig 1")
 
     elif (Deg1Var or Deg2Var) and OppVar > 0:  # Cos Adj and Deg1 or Deg2
@@ -110,12 +117,14 @@ def TrigFunc():
 def AngleCal():
     global Deg1Var
     global Deg2Var
+    Deg1Var = degrees(Deg1Var)
+    Deg2Var = degrees(Deg2Var)
 
     if Deg1Var > 0:  # Checking angle 1 value
         if Deg1Var < 90:  # Checks if value is valid
             AnswerDeg = float(90 - Deg1Var)
             print("Angle 2 is {:.2f} Degrees".format(AnswerDeg))
-            Deg1Var = AnswerDeg
+            Deg2Var = AnswerDeg
         else:
             print("{} is an invalid input".format(Deg1Var))
 
@@ -123,13 +132,12 @@ def AngleCal():
         if Deg2Var < 90:  # Checks if value is valid
             AnswerDeg = float(90 - Deg2Var)
             print("Angle 1 is {:.2f} Degrees".format(AnswerDeg))
-            Deg2Var = AnswerDeg
+            Deg1Var = AnswerDeg
         else:
             print("{} is an invalid input".format(Deg2Var))
 
 
 def Pythag():
-
     global HypVar
     global OppVar
     global AdjVar
@@ -156,13 +164,22 @@ def Pythag():
 def MainProgram():
     global Deg1Var
     global Deg2Var
+    global HypVar
+    global OppVar
+    global AdjVar
     EntryValue()
+    Deg1Var = radians(Deg1Var)
+    Deg2Var = radians(Deg2Var)
     TrigFunc()
-    AngleCal()
-    Deg1Var=radians(Deg1Var)
-    Deg2Var=radians(Deg2Var)
     Pythag()
+    AngleCal()
+    Deg2Var = round(Deg2Var, 2)
+    Deg1Var = round(Deg1Var, 2)
+    HypVar = round(HypVar, 2)
+    OppVar = round(OppVar, 2)
+    AdjVar = round(AdjVar, 2)
     Entryboxes()
+
 
 def Entryboxes():
     global ToggleEntry
@@ -173,8 +190,13 @@ def Entryboxes():
     global Angle2
     global Submit
     global Return
+    HypAnswer = Label(window, fg="Black", font=("arial", 26), text=HypVar)
+    OppAnswer = Label(window, fg="Black", font=("arial", 26), text=OppVar)
+    AdjAnswer = Label(window, fg="Black", font=("arial", 26), text=AdjVar)
+    Angle1Answer = Label(window, fg="Black", font=("arial", 26), text=Deg1Var)
+    Angle2Answer = Label(window, fg="Black", font=("arial", 26), text=Deg2Var)
 
-    if ToggleEntry==True:
+    if ToggleEntry == True:
         #### DESTROY NEW BUTTONS
         Hyp = Entry(window, fg="Black", width="10", font=("arial", 28))
         Hyp.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
@@ -189,8 +211,13 @@ def Entryboxes():
         Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
         Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
         Return.destroy()
+        HypAnswer.destroy()
+        OppAnswer.destroy()
+        AdjAnswer.destroy()
+        Angle1Answer.destroy()
+        Angle2Answer.destroy()
 
-    if ToggleEntry==False:
+    if ToggleEntry == False:
         Hyp.destroy()
         Opp.destroy()
         Adj.destroy()
@@ -199,7 +226,13 @@ def Entryboxes():
         Submit.destroy()
         Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
         Return.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
+        HypAnswer.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
+        OppAnswer.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
+        AdjAnswer.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
+        Angle1Answer.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
+        Angle2Answer.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
     ToggleEntry = not ToggleEntry
+
 
 ### Tkinter Set up
 window = Tk()
@@ -261,7 +294,6 @@ OneLabel.place(x=595, y=845, anchor=CENTER)
 
 TwoLabel = Label(window, text="2", bg="white", font=("arial", 32))
 TwoLabel.place(x=150, y=450, anchor=CENTER)
-
 
 # Initiate buttons and entry boxes
 Entryboxes()
