@@ -167,6 +167,11 @@ def MainProgram():
     global HypVar
     global OppVar
     global AdjVar
+    global HypAnswer
+    global OppAnswer
+    global AdjAnswer
+    global Angle1Answer
+    global Angle2Answer
     EntryValue()
     Deg1Var = radians(Deg1Var)
     Deg2Var = radians(Deg2Var)
@@ -178,6 +183,11 @@ def MainProgram():
     HypVar = round(HypVar, 2)
     OppVar = round(OppVar, 2)
     AdjVar = round(AdjVar, 2)
+    HypAnswer.destroy()
+    OppAnswer.destroy()
+    AdjAnswer.destroy()
+    Angle1Answer.destroy()
+    Angle2Answer.destroy()
     Entryboxes()
 
 
@@ -190,11 +200,31 @@ def Entryboxes():
     global Angle2
     global Submit
     global Return
+    global HypAnswer
+    global OppAnswer
+    global AdjAnswer
+    global Angle1Answer
+    global Angle2Answer
     HypAnswer = Label(window, fg="Black", font=("arial", 26), text=HypVar)
     OppAnswer = Label(window, fg="Black", font=("arial", 26), text=OppVar)
     AdjAnswer = Label(window, fg="Black", font=("arial", 26), text=AdjVar)
     Angle1Answer = Label(window, fg="Black", font=("arial", 26), text=Deg1Var)
     Angle2Answer = Label(window, fg="Black", font=("arial", 26), text=Deg2Var)
+    HypAnswer.pack()
+    OppAnswer.pack()
+    AdjAnswer.pack()
+    Angle1Answer.pack()
+    Angle2Answer.pack()
+    HypAnswer.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
+    OppAnswer.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
+    AdjAnswer.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
+    Angle1Answer.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
+    Angle2Answer.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
+    HypAnswer.pack_forget()
+    OppAnswer.pack_forget()
+    AdjAnswer.pack_forget()
+    Angle1Answer.pack_forget()
+    Angle2Answer.pack_forget()
 
     if ToggleEntry == True:
         #### DESTROY NEW BUTTONS
@@ -211,13 +241,13 @@ def Entryboxes():
         Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
         Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
         Return.destroy()
-        HypAnswer.destroy()
-        OppAnswer.destroy()
-        AdjAnswer.destroy()
-        Angle1Answer.destroy()
-        Angle2Answer.destroy()
 
     if ToggleEntry == False:
+        HypAnswer = Label(window, fg="Black", font=("arial", 26), text=HypVar)
+        OppAnswer = Label(window, fg="Black", font=("arial", 26), text=OppVar)
+        AdjAnswer = Label(window, fg="Black", font=("arial", 26), text=AdjVar)
+        Angle1Answer = Label(window, fg="Black", font=("arial", 26), text=Deg1Var)
+        Angle2Answer = Label(window, fg="Black", font=("arial", 26), text=Deg2Var)
         Hyp.destroy()
         Opp.destroy()
         Adj.destroy()
@@ -226,11 +256,11 @@ def Entryboxes():
         Submit.destroy()
         Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
         Return.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
-        HypAnswer.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
-        OppAnswer.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
-        AdjAnswer.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
-        Angle1Answer.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
-        Angle2Answer.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
+        HypAnswer.pack()
+        OppAnswer.pack()
+        AdjAnswer.pack()
+        Angle1Answer.pack()
+        Angle2Answer.pack()
     ToggleEntry = not ToggleEntry
 
 
