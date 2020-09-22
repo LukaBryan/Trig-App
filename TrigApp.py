@@ -167,11 +167,6 @@ def MainProgram():
     global HypVar
     global OppVar
     global AdjVar
-    global HypAnswer
-    global OppAnswer
-    global AdjAnswer
-    global Angle1Answer
-    global Angle2Answer
     EntryValue()
     Deg1Var = radians(Deg1Var)
     Deg2Var = radians(Deg2Var)
@@ -183,11 +178,6 @@ def MainProgram():
     HypVar = round(HypVar, 2)
     OppVar = round(OppVar, 2)
     AdjVar = round(AdjVar, 2)
-    HypAnswer.destroy()
-    OppAnswer.destroy()
-    AdjAnswer.destroy()
-    Angle1Answer.destroy()
-    Angle2Answer.destroy()
     Entryboxes()
 
 
@@ -200,21 +190,11 @@ def Entryboxes():
     global Angle2
     global Submit
     global Return
-    global HypAnswer
-    global OppAnswer
-    global AdjAnswer
-    global Angle1Answer
-    global Angle2Answer
     HypAnswer = Label(window, fg="Black", font=("arial", 26), text=HypVar)
     OppAnswer = Label(window, fg="Black", font=("arial", 26), text=OppVar)
     AdjAnswer = Label(window, fg="Black", font=("arial", 26), text=AdjVar)
     Angle1Answer = Label(window, fg="Black", font=("arial", 26), text=Deg1Var)
     Angle2Answer = Label(window, fg="Black", font=("arial", 26), text=Deg2Var)
-    HypAnswer.pack()
-    OppAnswer.pack()
-    AdjAnswer.pack()
-    Angle1Answer.pack()
-    Angle2Answer.pack()
     HypAnswer.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
     OppAnswer.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
     AdjAnswer.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
@@ -243,6 +223,7 @@ def Entryboxes():
         Return.destroy()
 
     if ToggleEntry == False:
+        rectangle = canvas.create_rectangle(700, 20, 900, 350, outline="#382525", fill="#ffffff")
         HypAnswer = Label(window, fg="Black", font=("arial", 26), text=HypVar)
         OppAnswer = Label(window, fg="Black", font=("arial", 26), text=OppVar)
         AdjAnswer = Label(window, fg="Black", font=("arial", 26), text=AdjVar)
@@ -262,7 +243,11 @@ def Entryboxes():
         Angle1Answer.pack()
         Angle2Answer.pack()
     ToggleEntry = not ToggleEntry
-
+    HypAnswer.destroy()
+    OppAnswer.destroy()
+    AdjAnswer.destroy()
+    Angle1Answer.destroy()
+    Angle2Answer.destroy()
 
 ### Tkinter Set up
 window = Tk()
