@@ -160,7 +160,6 @@ def Pythag():
         print("Hyp is {:.2f}".format(AnswerPy))
         HypVar = AnswerPy
 
-
 def MainProgram():
     global Deg1Var
     global Deg2Var
@@ -188,68 +187,68 @@ def Entryboxes():
     global Adj
     global Angle1
     global Angle2
+
     global Submit
     global Return
+
+    global HypAnswer
+    global OppAnswer
+    global AdjAnswer
+    global Angle1Answer
+    global Angle2Answer
+
+    Hyp = Entry(window, fg="Black", width="10", font=("arial", 28))
+    Opp = Entry(window, fg="Black", width="10", font=("arial", 28))
+    Adj = Entry(window, fg="Black", width="10", font=("arial", 28))
+    Angle1 = Entry(window, fg="Black", width="10", font=("arial", 28))
+    Angle2 = Entry(window, fg="Black", bg="#FFFFFF", width="10", font=("arial", 28))
+    Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
+
+    Hyp.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
+    Opp.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
+    Adj.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
+    Angle1.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
+    Angle2.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
+    Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
+
     HypAnswer = Label(window, fg="Black", font=("arial", 26), text=HypVar)
     OppAnswer = Label(window, fg="Black", font=("arial", 26), text=OppVar)
     AdjAnswer = Label(window, fg="Black", font=("arial", 26), text=AdjVar)
     Angle1Answer = Label(window, fg="Black", font=("arial", 26), text=Deg1Var)
     Angle2Answer = Label(window, fg="Black", font=("arial", 26), text=Deg2Var)
+
     HypAnswer.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
     OppAnswer.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
     AdjAnswer.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
     Angle1Answer.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
     Angle2Answer.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
-    HypAnswer.pack_forget()
-    OppAnswer.pack_forget()
-    AdjAnswer.pack_forget()
-    Angle1Answer.pack_forget()
-    Angle2Answer.pack_forget()
 
     if ToggleEntry == True:
-        #### DESTROY NEW BUTTONS
-        Hyp = Entry(window, fg="Black", width="10", font=("arial", 28))
-        Hyp.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
-        Opp = Entry(window, fg="Black", width="10", font=("arial", 28))
-        Opp.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
-        Adj = Entry(window, fg="Black", width="10", font=("arial", 28))
-        Adj.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
-        Angle1 = Entry(window, fg="Black", width="10", font=("arial", 28))
-        Angle1.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
-        Angle2 = Entry(window, fg="Black", bg="#FFFFFF", width="10", font=("arial", 28))
-        Angle2.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
-        Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
-        Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
+        HypAnswer.destroy()
+        OppAnswer.destroy()
+        AdjAnswer.destroy()
+        Angle1Answer.destroy()
+        Angle2Answer.destroy()
+
         Return.destroy()
 
     if ToggleEntry == False:
-        rectangle = canvas.create_rectangle(700, 20, 900, 350, outline="#382525", fill="#ffffff")
-        HypAnswer = Label(window, fg="Black", font=("arial", 26), text=HypVar)
-        OppAnswer = Label(window, fg="Black", font=("arial", 26), text=OppVar)
-        AdjAnswer = Label(window, fg="Black", font=("arial", 26), text=AdjVar)
-        Angle1Answer = Label(window, fg="Black", font=("arial", 26), text=Deg1Var)
-        Angle2Answer = Label(window, fg="Black", font=("arial", 26), text=Deg2Var)
         Hyp.destroy()
         Opp.destroy()
         Adj.destroy()
         Angle1.destroy()
         Angle2.destroy()
+
         Submit.destroy()
+
+        # rectangle = canvas.create_rectangle(700, 20, 900, 350, outline="#382525", fill="#ffffff")
+        # canvas.tag_raise(rectangle)
         Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
         Return.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
-        HypAnswer.pack()
-        OppAnswer.pack()
-        AdjAnswer.pack()
-        Angle1Answer.pack()
-        Angle2Answer.pack()
     ToggleEntry = not ToggleEntry
-    HypAnswer.destroy()
-    OppAnswer.destroy()
-    AdjAnswer.destroy()
-    Angle1Answer.destroy()
-    Angle2Answer.destroy()
 
-### Tkinter Set up
+
+# Tkinter Set up
 window = Tk()
 canvas = Canvas(window, width=1000, height=1000)  # Defines how big the window can be
 img = PhotoImage(file="kinghom.gif")  # Import image
@@ -262,7 +261,7 @@ EntryRelXFloat = 0.8
 Height = 0.08
 HeightInc = 0.06
 
-### USER INTERFACE FEATURES
+# USER INTERFACE FEATURES
 # Title
 TitleLabel = Label(window, text="Trig Calculator", font=("arial", 48))
 TitleLabel.place(x=20, y=16, anchor=NW)
