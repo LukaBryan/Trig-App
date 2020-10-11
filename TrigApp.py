@@ -204,45 +204,38 @@ def Entryboxes():
     Angle2 = Entry(window, fg="Black", bg="#FFFFFF", width="10", font=("arial", 28))
     Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
 
-    Hyp.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
-    Opp.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
-    Adj.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
-    Angle1.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
-    Angle2.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
-    Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
-
     HypAnswer = Label(window, fg="Black", font=("arial", 26), text=HypVar)
     OppAnswer = Label(window, fg="Black", font=("arial", 26), text=OppVar)
     AdjAnswer = Label(window, fg="Black", font=("arial", 26), text=AdjVar)
     Angle1Answer = Label(window, fg="Black", font=("arial", 26), text=Deg1Var)
     Angle2Answer = Label(window, fg="Black", font=("arial", 26), text=Deg2Var)
 
-    HypAnswer.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
-    OppAnswer.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
-    AdjAnswer.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
-    Angle1Answer.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
-    Angle2Answer.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
-
     if ToggleEntry == True:
+        Hyp.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
+        Opp.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
+        Adj.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
+        Angle1.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
+        Angle2.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
+        Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
         HypAnswer.destroy()
         OppAnswer.destroy()
         AdjAnswer.destroy()
         Angle1Answer.destroy()
         Angle2Answer.destroy()
-
         Return.destroy()
 
     if ToggleEntry == False:
+        HypAnswer.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
+        OppAnswer.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
+        AdjAnswer.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
+        Angle1Answer.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
+        Angle2Answer.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
         Hyp.destroy()
         Opp.destroy()
         Adj.destroy()
         Angle1.destroy()
         Angle2.destroy()
-
         Submit.destroy()
-
-        # rectangle = canvas.create_rectangle(700, 20, 900, 350, outline="#382525", fill="#ffffff")
-        # canvas.tag_raise(rectangle)
         Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
         Return.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
     ToggleEntry = not ToggleEntry
@@ -313,7 +306,7 @@ TwoLabel.place(x=150, y=450, anchor=CENTER)
 Entryboxes()
 
 window.title("Trig Calculator")  # Sets window name
-canvas.configure(bg="grey50")
+###canvas.configure(bg="grey50")
 window.iconbitmap(bitmap="icon.ico")
 canvas.pack()
 window.mainloop()
