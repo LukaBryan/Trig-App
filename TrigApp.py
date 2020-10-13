@@ -197,13 +197,6 @@ def Entryboxes():
     global Angle1Answer
     global Angle2Answer
 
-    Hyp = Entry(window, fg="Black", width="10", font=("arial", 28))
-    Opp = Entry(window, fg="Black", width="10", font=("arial", 28))
-    Adj = Entry(window, fg="Black", width="10", font=("arial", 28))
-    Angle1 = Entry(window, fg="Black", width="10", font=("arial", 28))
-    Angle2 = Entry(window, fg="Black", bg="#FFFFFF", width="10", font=("arial", 28))
-    Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
-
     HypAnswer = Label(window, fg="Black", font=("arial", 26), text=HypVar)
     OppAnswer = Label(window, fg="Black", font=("arial", 26), text=OppVar)
     AdjAnswer = Label(window, fg="Black", font=("arial", 26), text=AdjVar)
@@ -211,12 +204,12 @@ def Entryboxes():
     Angle2Answer = Label(window, fg="Black", font=("arial", 26), text=Deg2Var)
 
     if ToggleEntry == True:
-        Hyp.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
-        Opp.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
-        Adj.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
-        Angle1.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
-        Angle2.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
-        Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
+        #Hyp.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
+        #Opp.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
+        #Adj.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
+        #Angle1.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
+        #Angle2.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
+        #Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
         HypAnswer.destroy()
         OppAnswer.destroy()
         AdjAnswer.destroy()
@@ -225,11 +218,11 @@ def Entryboxes():
         Return.destroy()
 
     if ToggleEntry == False:
-        HypAnswer.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
-        OppAnswer.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
-        AdjAnswer.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
-        Angle1Answer.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
-        Angle2Answer.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
+        #HypAnswer.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
+        #OppAnswer.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
+        #AdjAnswer.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
+        #Angle1Answer.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
+        #Angle2Answer.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
         Hyp.destroy()
         Opp.destroy()
         Adj.destroy()
