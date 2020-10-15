@@ -197,6 +197,7 @@ def Entryboxes():
     global Angle1Answer
     global Angle2Answer
 
+    Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
     HypAnswer = Label(window, fg="Black", font=("arial", 26), text=HypVar)
     OppAnswer = Label(window, fg="Black", font=("arial", 26), text=OppVar)
     AdjAnswer = Label(window, fg="Black", font=("arial", 26), text=AdjVar)
@@ -204,31 +205,20 @@ def Entryboxes():
     Angle2Answer = Label(window, fg="Black", font=("arial", 26), text=Deg2Var)
 
     if ToggleEntry == True:
-        #Hyp.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
-        #Opp.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
-        #Adj.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
-        #Angle1.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
-        #Angle2.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
-        #Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
-        HypAnswer.destroy()
-        OppAnswer.destroy()
-        AdjAnswer.destroy()
-        Angle1Answer.destroy()
-        Angle2Answer.destroy()
-        Return.destroy()
+        Hyp.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
+        Opp.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
+        Adj.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
+        Angle1.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
+        Angle2.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
+        Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
 
     if ToggleEntry == False:
-        #HypAnswer.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
-        #OppAnswer.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
-        #AdjAnswer.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
-        #Angle1Answer.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
-        #Angle2Answer.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
-        Hyp.destroy()
-        Opp.destroy()
-        Adj.destroy()
-        Angle1.destroy()
-        Angle2.destroy()
-        Submit.destroy()
+        HypAnswer.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
+        OppAnswer.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
+        AdjAnswer.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
+        Angle1Answer.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
+        Angle2Answer.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
+
         Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
         Return.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
     ToggleEntry = not ToggleEntry
@@ -240,7 +230,6 @@ canvas = Canvas(window, width=1000, height=1000)  # Defines how big the window c
 img = PhotoImage(file="kinghom.gif")  # Import image
 canvas.create_image(500, 500, image=img)  # Creates triangle Graphic
 window.resizable(False, False)  # Stop the ability for the window to be resized
-Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
 
 LabelRelXFloat = 0.58
 EntryRelXFloat = 0.8
@@ -294,6 +283,8 @@ OneLabel.place(x=595, y=845, anchor=CENTER)
 
 TwoLabel = Label(window, text="2", bg="white", font=("arial", 32))
 TwoLabel.place(x=150, y=450, anchor=CENTER)
+
+Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
 
 # Initiate buttons and entry boxes
 Entryboxes()
