@@ -188,21 +188,21 @@ def Entryboxes():
     global Angle1
     global Angle2
 
-    global Submit
-    global Return
-
-    global HypAnswer
-    global OppAnswer
-    global AdjAnswer
-    global Angle1Answer
-    global Angle2Answer
-
-    Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
     HypAnswer = Label(window, fg="Black", font=("arial", 26), text=HypVar)
     OppAnswer = Label(window, fg="Black", font=("arial", 26), text=OppVar)
     AdjAnswer = Label(window, fg="Black", font=("arial", 26), text=AdjVar)
     Angle1Answer = Label(window, fg="Black", font=("arial", 26), text=Deg1Var)
     Angle2Answer = Label(window, fg="Black", font=("arial", 26), text=Deg2Var)
+
+    Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
+    Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
+    Hyp = Entry(window, fg="Black", width="10", font=("arial", 28))
+    Opp = Entry(window, fg="Black", width="10", font=("arial", 28))
+    Adj = Entry(window, fg="Black", width="10", font=("arial", 28))
+    Angle1 = Entry(window, fg="Black", width="10", font=("arial", 28))
+    Angle2 = Entry(window, fg="Black", bg="#FFFFFF", width="10", font=("arial", 28))
+
+    Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
 
     if ToggleEntry == True:
         Hyp.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
@@ -212,6 +212,7 @@ def Entryboxes():
         Angle2.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
         Submit.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
 
+
     if ToggleEntry == False:
         HypAnswer.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
         OppAnswer.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
@@ -219,8 +220,14 @@ def Entryboxes():
         Angle1Answer.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
         Angle2Answer.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
 
-        Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
         Return.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
+
+        Hyp.destroy()
+        Opp.destroy()
+        Adj.destroy()
+        Angle1.destroy()
+        Angle2.destroy()
+
     ToggleEntry = not ToggleEntry
 
 
@@ -245,13 +252,6 @@ TitleLabel.place(x=20, y=16, anchor=NW)
 Buttonimg = PhotoImage(file="ButtonImage.gif")
 
 # Entries and entry labels
-Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
-Return = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
-Hyp = Entry(window, fg="Black", width="10", font=("arial", 28))
-Opp = Entry(window, fg="Black", width="10", font=("arial", 28))
-Adj = Entry(window, fg="Black", width="10", font=("arial", 28))
-Angle1 = Entry(window, fg="Black", width="10", font=("arial", 28))
-Angle2 = Entry(window, fg="Black", bg="#FFFFFF", width="10", font=("arial", 28))
 
 HypLabel = Label(window, text="H = ", bg="white", font=("arial", 32))
 HypLabel.place(relx=LabelRelXFloat, rely=Height, anchor=CENTER)
