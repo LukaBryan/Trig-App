@@ -7,8 +7,6 @@ OppVar = 0
 AdjVar = 0
 Deg1Var = 0
 Deg2Var = 0
-delete = 0
-
 
 # Functions
 def EntryValue():
@@ -169,8 +167,7 @@ def MainProgram():
     global OppVar
     global AdjVar
     global delete
-    global HypAnswer, OppAnswer, AdjAnswer, Angle1Answer, Angle2Answer
-
+    global HypAnswer
     EntryValue()
     Deg1Var = radians(Deg1Var)
     Deg2Var = radians(Deg2Var)
@@ -183,13 +180,7 @@ def MainProgram():
     OppVar = round(OppVar, 2)
     AdjVar = round(AdjVar, 2)
     Entryboxes()
-    if delete == 1:
-        HypAnswer.destroy()
-        OppAnswer.destroy()
-        AdjAnswer.destroy()
-        Angle1Answer.destroy()
-        Angle2Answer.destroy()
-        Return.destroy()
+
 
 
 def Entryboxes():
@@ -202,16 +193,27 @@ def Entryboxes():
     Angle1Answer = Label(window, fg="Black", font=("arial", 26), text=Deg1Var)
     Angle2Answer = Label(window, fg="Black", font=("arial", 26), text=Deg2Var)
 
+    HypAnswerCover = Label(window, fg="Black", bg="white", font=("arial", 26), text="           ")
+    OppAnswerCover = Label(window, fg="Black", bg="white", font=("arial", 26), text="           ")
+    AdjAnswerCover = Label(window, fg="Black", bg="white", font=("arial", 26), text="           ")
+    Angle1AnswerCover = Label(window, fg="Black", bg="white", font=("arial", 26), text="           ")
+    Angle2AnswerCover = Label(window, fg="Black", bg="white", font=("arial", 26), text="           ")
+
     ReturnButton = Button(window, font=("arial", 32), text="Return", border=0, width=12, command=Entryboxes)
 
     if ToggleEntry:
-        delete = 1
         Submit = Button(window, image=Buttonimg, font=("arial", 32), text="Submit", border=0, command=MainProgram)
         Hyp = Entry(window, fg="Black", width="10", font=("arial", 28))
         Opp = Entry(window, fg="Black", width="10", font=("arial", 28))
         Adj = Entry(window, fg="Black", width="10", font=("arial", 28))
         Angle1 = Entry(window, fg="Black", width="10", font=("arial", 28))
         Angle2 = Entry(window, fg="Black", bg="#FFFFFF", width="10", font=("arial", 28))
+
+        HypAnswerCover.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
+        OppAnswerCover.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
+        AdjAnswerCover.place(relx=EntryRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
+        Angle1AnswerCover.place(relx=EntryRelXFloat, rely=Height + 3 * HeightInc, anchor=CENTER)
+        Angle2AnswerCover.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
 
         Hyp.place(relx=EntryRelXFloat, rely=Height, anchor=CENTER)
         Opp.place(relx=EntryRelXFloat, rely=Height + HeightInc, anchor=CENTER)
@@ -234,7 +236,7 @@ def Entryboxes():
         Angle2Answer.place(relx=EntryRelXFloat, rely=Height + 4 * HeightInc, anchor=CENTER)
 
         ReturnButton.place(relx=0.734, rely=Height + 5.3 * HeightInc, anchor=CENTER)
-        delete = 0
+        delete = int(0)
 
         try:
             Hyp.destroy()
@@ -247,6 +249,7 @@ def Entryboxes():
             pass
 
     ToggleEntry = not ToggleEntry
+
 
 # Tkinter Set up
 window = Tk()
@@ -270,13 +273,13 @@ Buttonimg = PhotoImage(file="ButtonImage.gif")
 
 # Entries and entry labels
 
-HypLabel = Label(window, text="H = ", bg="white", font=("arial", 32))
+HypLabel = Label(window, text="   H = ", bg="white", font=("arial", 32))
 HypLabel.place(relx=LabelRelXFloat, rely=Height, anchor=CENTER)
 
-OppLabel = Label(window, text="O = ", bg="white", font=("arial", 32))
+OppLabel = Label(window, text="   O = ", bg="white", font=("arial", 32))
 OppLabel.place(relx=LabelRelXFloat, rely=Height + HeightInc, anchor=CENTER)
 
-AdjLabel = Label(window, text="A = ", bg="white", font=("arial", 32))
+AdjLabel = Label(window, text="   A = ", bg="white", font=("arial", 32))
 AdjLabel.place(relx=LabelRelXFloat, rely=Height + 2 * HeightInc, anchor=CENTER)
 
 Angle1Label = Label(window, text="∠1 = ", bg="white", font=("arial", 32))
