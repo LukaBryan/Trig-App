@@ -8,13 +8,11 @@ AdjVar = 0
 Deg1Var = 0
 Deg2Var = 0
 
+
 # Functions
 def EntryValue():
-    global HypVar
-    global OppVar
-    global AdjVar
-    global Deg1Var
-    global Deg2Var
+    global Exit, HypVar, OppVar, AdjVar, Deg1Var, Deg2Var
+    Exit = 0
 
     # Checks for values in each entry
     while True:
@@ -62,12 +60,18 @@ def EntryValue():
     print(AdjVar)
     print(Deg1Var)
     print(Deg2Var)
+    if HypVar != 0:
+        if OppVar or AdjVar > HypVar:
+            print("Math error Hyp cant be smaller than opp and adj")
+            Hyp.delete(0, END)
+            Opp.delete(0, END)
+            Adj.delete(0, END)
+            Hyp.insert(0, "Math Error")
+            Exit = 1
 
 
 def TrigFunc():
-    global HypVar, AnswerTrig
-    global OppVar
-    global AdjVar
+    global HypVar, AnswerTrig, OppVar, AdjVar
 
     # Working out what trig scenario to use
     if (Deg1Var or Deg2Var) and HypVar > 0:  # Sin Hyp and Deg1 or Deg2
@@ -114,8 +118,7 @@ def TrigFunc():
 
 
 def AngleCal():
-    global Deg1Var
-    global Deg2Var
+    global Deg1Var, Deg2Var
     Deg1Var = degrees(Deg1Var)
     Deg2Var = degrees(Deg2Var)
 
@@ -137,9 +140,7 @@ def AngleCal():
 
 
 def Pythag():
-    global HypVar
-    global OppVar
-    global AdjVar
+    global HypVar, OppVar, AdjVar
 
     if OppVar and HypVar > 0:  # Checking what Py scenario to use
         print("Py 1")
@@ -161,14 +162,10 @@ def Pythag():
 
 
 def MainProgram():
-    global Deg1Var
-    global Deg2Var
-    global HypVar
-    global OppVar
-    global AdjVar
-    global delete
-    global HypAnswer
+    global Exit, Deg1Var, Deg2Var, HypVar, OppVar, AdjVar, delete, HypAnswer
     EntryValue()
+    if Exit == 1:
+        return
     Deg1Var = radians(Deg1Var)
     Deg2Var = radians(Deg2Var)
     TrigFunc()
@@ -182,10 +179,8 @@ def MainProgram():
     Entryboxes()
 
 
-
 def Entryboxes():
-    global ToggleEntry, Submit, Hyp, Opp, Adj, Angle1, Angle2, delete
-    global HypAnswer, OppAnswer, AdjAnswer, Angle1Answer, Angle2Answer
+    global ToggleEntry, Submit, Hyp, Opp, Adj, Angle1, Angle2, delete, HypAnswer, OppAnswer, AdjAnswer, Angle1Answer, Angle2Answer
 
     HypAnswer = Label(window, fg="Black", font=("arial", 26), text=HypVar)
     OppAnswer = Label(window, fg="Black", font=("arial", 26), text=OppVar)
